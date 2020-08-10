@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Feed</title>
+</head>
+<body>
+	<div style="width:1000px; margin: auto; padding:20px;">
+		<div>
+			{% if user.is_authenticated %}
+				<p> Hello, {{request.user}} <a align="right" href="logout/">Log Out</a></p>
+				<p align="right"></p>
+			{% else %}
+				<P><a href="login/">Log In</a></P>
+				<p><a href="register/">Register</a></p>
+			{% endif %}
+
+      <span align="right"><a href="ce">Create Post</a></span>
+		</div>
+		{% for post in posts %}
+		<div style="max-heigh:100px; overflow:hidden; padding: 30px;">
+			<h1>{{post.title}}</h1>
+			<p>{{post.text}}</p>
+			<p align="left"><a href="/p/{{post.id}}">Comments</a></p>
+			<p align="right">- by {{post.user}} at {{post.time}},{{post.id}}</p>
+		</div>
+		{% endfor %}
+	</div>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>{{pa.user}} - {{pa.title}}</title>
+</head>
+<body>
+	<div align="center"><a href="/">Home</a></div>
+	<div style="max-width:1000px; margin: auto; padding:20px;">
+		<h1>{{pa.title}}</h1>
+		<p>{{pa.text}}</p>
+		{% if la %}
+		<p><a href="/ce/{{pa.id}}">Update</a></p><p><a href="/delete/{{pa.id}}">Delete</a></p>
+		{% endif %}
+		
+	</div>	
+	<div style="max-width:1000px; margin: auto; padding:20px;">
+		{% if user.is_authenticated %}
+		<form method="post" action="" id="create_comment">
+		{% csrf_token %}
+		{{form}}
+		<input type="submit" value="submit">
+		{%else%}
+		<p>Please <a href="login/">Log In</a> to comment.</p>
+		{% endif %}
+	</form>
+
+		{% for comment in comments %}
+			<div>
+
+				<p>{{comment.text}}</p>
+				<p>{{comment.user}} at {{comment.time}}</p>
+			</div>
+	
+		{% endfor %}
+
+	</div>	
+
+</body>
+</html>
