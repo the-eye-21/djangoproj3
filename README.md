@@ -1,3 +1,3 @@
 # djangoproj3
 
-Demo available at philsama.pythonanywhere.com
+Demo available at <https://philsama.pythonanywhere.com>
